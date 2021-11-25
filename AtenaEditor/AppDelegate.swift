@@ -10,7 +10,7 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    
+    weak var vc: ViewController!
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -24,7 +24,43 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
-
-
+    @IBAction func saveKitamuraCSV(_ sender: Any) {
+        vc.outputKitamuraCSV(sender)
+    }
+    
+    @IBAction func openAtenaCSV(_ sender: Any) {
+        vc.openAtenaCSV()
+    }
+    
+    @IBAction func addToSelection(_ sender: Any) {
+        vc.addToSelection()
+    }
+    
+    @IBAction func removeFromSelection(_ sender: Any) {
+        vc.removeFromSelection()
+    }
+    
+    @IBAction func showAll(_ sender: Any) {
+        vc.showAllButton(sender)
+    }
+    
+    @IBAction func showSelected(_ sender: Any) {
+        vc.showSelectOnlyButton(sender)
+    }
+    
+    @IBAction func showPrintMark(_ sender: Any) {
+        vc.showPrintOnlyButton(sender)
+    }
+    
+    @IBAction func selectTransLastYear(_ sender: Any) {
+        vc.selectTransLastYear()
+    }
+    @IBAction func selectMochuTransLastYear(_ sender: Any) {
+        vc.selectMochuTransLastYear()
+    }
+    @IBAction func selectReceivedLastYear(_ sender: Any) {
+        vc.selectReceivedLastYear()
+    }
+    
 }
 

@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		581B07F5274F1CCB007FCBB9 /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 581B07F4274F1CCB007FCBB9 /* SwiftCSV */; };
 		58EFFC03274BAC6800ECA33F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EFFC02274BAC6800ECA33F /* AppDelegate.swift */; };
 		58EFFC05274BAC6800ECA33F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EFFC04274BAC6800ECA33F /* ViewController.swift */; };
 		58EFFC07274BAC6900ECA33F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EFFC06274BAC6900ECA33F /* Assets.xcassets */; };
 		58EFFC0A274BAC6900ECA33F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EFFC08274BAC6900ECA33F /* Main.storyboard */; };
+		58EFFC16274BB00000ECA33F /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 58EFFC15274BB00000ECA33F /* GRDB */; };
+		58EFFC17274BB43600ECA33F /* Atena.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 58EFFC13274BAFCC00ECA33F /* Atena.sqlite */; };
+		58EFFC19274BBA0A00ECA33F /* CustomCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EFFC18274BBA0A00ECA33F /* CustomCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,9 @@
 		58EFFC06274BAC6900ECA33F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58EFFC09274BAC6900ECA33F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58EFFC0B274BAC6900ECA33F /* AtenaEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AtenaEditor.entitlements; sourceTree = "<group>"; };
+		58EFFC13274BAFCC00ECA33F /* Atena.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Atena.sqlite; sourceTree = SOURCE_ROOT; };
+		58EFFC18274BBA0A00ECA33F /* CustomCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellView.swift; sourceTree = "<group>"; };
+		58EFFC1A274CF7B700ECA33F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58EFFC16274BB00000ECA33F /* GRDB in Frameworks */,
+				581B07F5274F1CCB007FCBB9 /* SwiftCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				58EFFC01274BAC6800ECA33F /* AtenaEditor */,
+				58EFFC1A274CF7B700ECA33F /* README.md */,
 				58EFFC00274BAC6800ECA33F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,9 +64,11 @@
 			children = (
 				58EFFC02274BAC6800ECA33F /* AppDelegate.swift */,
 				58EFFC04274BAC6800ECA33F /* ViewController.swift */,
+				58EFFC18274BBA0A00ECA33F /* CustomCellView.swift */,
 				58EFFC06274BAC6900ECA33F /* Assets.xcassets */,
 				58EFFC08274BAC6900ECA33F /* Main.storyboard */,
 				58EFFC0B274BAC6900ECA33F /* AtenaEditor.entitlements */,
+				58EFFC13274BAFCC00ECA33F /* Atena.sqlite */,
 			);
 			path = AtenaEditor;
 			sourceTree = "<group>";
@@ -77,6 +89,10 @@
 			dependencies = (
 			);
 			name = AtenaEditor;
+			packageProductDependencies = (
+				58EFFC15274BB00000ECA33F /* GRDB */,
+				581B07F4274F1CCB007FCBB9 /* SwiftCSV */,
+			);
 			productName = AtenaEditor;
 			productReference = 58EFFBFF274BAC6800ECA33F /* AtenaEditor.app */;
 			productType = "com.apple.product-type.application";
@@ -105,6 +121,10 @@
 				Base,
 			);
 			mainGroup = 58EFFBF6274BAC6700ECA33F;
+			packageReferences = (
+				58EFFC14274BB00000ECA33F /* XCRemoteSwiftPackageReference "GRDB" */,
+				581B07F3274F1CCB007FCBB9 /* XCRemoteSwiftPackageReference "SwiftCSV" */,
+			);
 			productRefGroup = 58EFFC00274BAC6800ECA33F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -121,6 +141,7 @@
 			files = (
 				58EFFC07274BAC6900ECA33F /* Assets.xcassets in Resources */,
 				58EFFC0A274BAC6900ECA33F /* Main.storyboard in Resources */,
+				58EFFC17274BB43600ECA33F /* Atena.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +154,7 @@
 			files = (
 				58EFFC05274BAC6800ECA33F /* ViewController.swift in Sources */,
 				58EFFC03274BAC6800ECA33F /* AppDelegate.swift in Sources */,
+				58EFFC19274BBA0A00ECA33F /* CustomCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +323,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3K8Q9N3SGN;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -341,6 +363,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		581B07F3274F1CCB007FCBB9 /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.1;
+			};
+		};
+		58EFFC14274BB00000ECA33F /* XCRemoteSwiftPackageReference "GRDB" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		581B07F4274F1CCB007FCBB9 /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 581B07F3274F1CCB007FCBB9 /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
+		};
+		58EFFC15274BB00000ECA33F /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58EFFC14274BB00000ECA33F /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58EFFBF7274BAC6700ECA33F /* Project object */;
 }
