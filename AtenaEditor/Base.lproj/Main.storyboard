@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,6 +69,12 @@
                                         <menuItem title="Save キタムラ形式 CSV…" keyEquivalent="s" id="pxx-59-PXV">
                                             <connections>
                                                 <action selector="saveKitamuraCSV:" target="Voe-Tx-rLC" id="yQd-aK-uQF"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save 宛名家族形式 CSV..." id="RSR-rI-16e">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="saveNengaKazokuCSV:" target="Voe-Tx-rLC" id="3WV-7t-aFC"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -699,7 +706,7 @@
                     <window key="window" title="アドレスリスト" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="740" height="600"/>
+                        <rect key="contentRect" x="196" y="240" width="800" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -718,24 +725,24 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="AtenaEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="770" height="600"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="60" horizontalPageScroll="10" verticalLineScroll="60" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exw-BE-rIt">
-                                <rect key="frame" x="20" y="20" width="730" height="502"/>
+                                <rect key="frame" x="20" y="20" width="560" height="502"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" id="MjF-Ue-UbO">
-                                    <rect key="frame" x="1" y="1" width="728" height="500"/>
+                                    <rect key="frame" x="1" y="1" width="558" height="500"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveColumns="NO" rowHeight="60" headerView="xrB-j4-rwh" viewBased="YES" id="yOL-QH-2ZJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="748" height="472"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="758" height="472"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="736" minWidth="40" maxWidth="1000" id="r6P-vr-ctN">
+                                                <tableColumn width="746" minWidth="40" maxWidth="1000" id="r6P-vr-ctN">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="アドレスリスト">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -748,7 +755,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="MyTableCell" id="OOs-oI-B9b" customClass="CustomCellView" customModule="AtenaEditor" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="0.0" width="731" height="60"/>
+                                                            <rect key="frame" x="8" y="0.0" width="741" height="60"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="onX-zU-CNX">
@@ -774,7 +781,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ier-6G-Y8Y">
-                                                                    <rect key="frame" x="226" y="17" width="492" height="16"/>
+                                                                    <rect key="frame" x="236" y="17" width="492" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" id="aEr-Jh-WtG">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -802,7 +809,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2ol-zD-UQf">
-                                                                    <rect key="frame" x="226" y="41" width="118" height="16"/>
+                                                                    <rect key="frame" x="236" y="41" width="118" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="114" id="I4U-4c-lxn"/>
                                                                     </constraints>
@@ -813,7 +820,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aX6-MQ-eTI">
-                                                                    <rect key="frame" x="398" y="37" width="53" height="16"/>
+                                                                    <rect key="frame" x="408" y="37" width="53" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="49" id="qv7-fY-sRw"/>
                                                                     </constraints>
@@ -824,7 +831,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6yy-3t-eDL">
-                                                                    <rect key="frame" x="454" y="31" width="52" height="25"/>
+                                                                    <rect key="frame" x="464" y="31" width="52" height="25"/>
                                                                     <popUpButtonCell key="cell" type="push" title="未" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YcO-4x-P3N" id="GFk-34-O9d">
                                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="menu"/>
@@ -838,7 +845,7 @@
                                                                     </popUpButtonCell>
                                                                 </popUpButton>
                                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vec-gg-4qy">
-                                                                    <rect key="frame" x="507" y="31" width="52" height="25"/>
+                                                                    <rect key="frame" x="517" y="31" width="52" height="25"/>
                                                                     <popUpButtonCell key="cell" type="push" title="未" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="3Jx-oP-v8e" id="cBt-nJ-L6E">
                                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="menu"/>
@@ -852,7 +859,7 @@
                                                                     </popUpButtonCell>
                                                                 </popUpButton>
                                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3ft-kM-mKV">
-                                                                    <rect key="frame" x="627" y="31" width="52" height="25"/>
+                                                                    <rect key="frame" x="637" y="31" width="52" height="25"/>
                                                                     <popUpButtonCell key="cell" type="push" title="未" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="wn2-Sk-rjv" id="dfh-o6-l2E">
                                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="menu"/>
@@ -866,7 +873,7 @@
                                                                     </popUpButtonCell>
                                                                 </popUpButton>
                                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PPc-eV-Kfi">
-                                                                    <rect key="frame" x="680" y="31" width="52" height="25"/>
+                                                                    <rect key="frame" x="690" y="31" width="52" height="25"/>
                                                                     <popUpButtonCell key="cell" type="push" title="未" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="pLp-Yd-jV9" id="O5I-ej-91f">
                                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="menu"/>
@@ -880,7 +887,7 @@
                                                                     </popUpButtonCell>
                                                                 </popUpButton>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WGM-1O-D7k">
-                                                                    <rect key="frame" x="571" y="37" width="53" height="16"/>
+                                                                    <rect key="frame" x="581" y="37" width="53" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="49" id="Nic-nY-4uD"/>
                                                                     </constraints>
@@ -946,8 +953,8 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.40000000000000002" horizontal="YES" id="kR2-bq-T3i">
-                                    <rect key="frame" x="1" y="485" width="728" height="16"/>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="kR2-bq-T3i">
+                                    <rect key="frame" x="1" y="485" width="558" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="afP-xq-iy9">
@@ -955,7 +962,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" wantsLayer="YES" id="xrB-j4-rwh">
-                                    <rect key="frame" x="0.0" y="0.0" width="748" height="28"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="758" height="28"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -1021,6 +1028,17 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="outputKitamuraCSV:" target="XfG-lQ-9wD" id="LoA-0A-grO"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hm-8d-5iU">
+                                <rect key="frame" x="403" y="535" width="127" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="年賀家族CSV" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dha-Hv-CFY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="outputNengaKazokuCSV:" target="XfG-lQ-9wD" id="1eQ-Q0-M1q"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -28,6 +28,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vc.outputKitamuraCSV(sender)
     }
     
+    @IBAction func saveNengaKazokuCSV(_ sender: Any) {
+        vc.outputNengaKazokuCSV(sender)
+    }
+
     @IBAction func openAtenaCSV(_ sender: Any) {
         vc.openAtenaCSV()
     }

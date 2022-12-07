@@ -365,9 +365,7 @@ class ViewController: NSViewController,NSTableViewDelegate,NSTableViewDataSource
                                   "NamesOfFamily1","X-Suffix1","NamesOfFamily2","X-Suffix2","NamesOfFamily3",
                                   "X-Suffix3","atxBaseYear","X-NYCardHistory"]
         try! dbQueue!.write { db in
-            try db.execute(sql: """
-            DROP TABLE IF EXISTS "AddrList";
-            """)
+            try! db.execute(sql: "DROP TABLE IF EXISTS 'AddrList'")
             try db.execute(sql: """
             CREATE TABLE "AddrList" ("id" int NOT NULL DEFAULT '0', "LastName" varchar,"FirstName" varchar,"furiLastName" varchar,"furiFirstName" varchar,"AddressCode" varchar,"FullAddress" varchar,"Suffix" varchar,"PhoneItem" varchar,"EmailItem" varchar,"Memo" varchar,"NamesOfFamily1" varchar,"Suffix1" varchar,"NamesOfFamily2" varchar,"Suffix2" varchar,"NamesOfFamily3" varchar,"Suffix3" varchar,"atxBaseYear" int DEFAULT '2021',"NYCardHistory" varchar DEFAULT '00000000000000002006', "Selected" int DEFAULT '0', "Print" int DEFAULT '0');
             """)
@@ -471,6 +469,73 @@ class ViewController: NSViewController,NSTableViewDelegate,NSTableViewDataSource
                 //print(url.absoluteString)
                 do {
                     // キタムラのは SJISだって（笑)
+                    try str.write(to: url, atomically: true, encoding: String.Encoding.shiftJIS) // utf8
+                } catch {
+                    // failed to write file (bad permissions, bad filename etc.)
+                }
+            }
+        }
+
+    }
+    
+    
+    @IBAction func outputNengaKazokuCSV(_ sender: Any) {
+        let head = "\"お名前（姓）※必須\",\"お名前（名）※必須\",\"敬称※必須\",\"フリガナ（セイ）\",\"フリガナ（メイ）\",\"自宅郵便番号※必須\",\"自宅住所１※必須\",自宅住所２,自宅住所３,自宅住所４,様方,連名１（姓）,連名１（名）,連名１敬称,連名２（姓）,連名２（名）,連名２敬称,連名３（姓）,連名３（名）,連名３敬称,連名４（姓）,連名４（名）,連名４敬称,連名５（姓）,連名５（名）,連名５敬称,\"会社名１※法人の場合必須\",会社名２,部署名１,部署名２,役職１,役職２,\"会社郵便番号※法人の場合必須\",\"会社住所１※法人の場合必須\",会社住所２,会社住所３,会社住所４,会社連名１（姓）,会社連名１（名）,会社連名１敬称,会社連名１役職,会社連名１役職２行目,会社連名２（姓）,会社連名２（名）,会社連名２敬称,会社連名２役職１行目,会社連名２役職２行目"
+        let headvars: [String] = ["LastName","FirstName","Suffix","furiLastName","furiFirstName",
+                                "AddressCode","FullAddress","","","","",
+                                  "","NamesOfFamily1","Suffix1",
+                                "","NamesOfFamily2","Suffix2",
+                                "","NamesOfFamily3","Suffix3",
+                                "","","",
+                                "","","",
+                                "","","","","","","",
+                                  "","","","", "","","","",
+                                "","","","", "",""]
+        // 年賀家族形式：ヘッダ+CRLF＋(データ(SJIS)+CRLF)xn
+        var str = head + "\r\n"
+        for addr1 in alladdr
+        {
+            let addrid = addr1.id
+            var str1 = ""
+            for (colno,head1) in headvars.enumerated()
+            {
+                if head1 != ""
+                {
+                    let str2 = try! dbQueue!.read { db in
+                        try AddrList
+                            .select(sql:head1)
+                            .filter(sql:"id = ?",
+                                    arguments: [addrid])
+                            .asRequest(of: String.self)
+                            .fetchOne(db)
+                    }
+                    str1 += str2 ?? ""
+                    if colno != headvars.count-1
+                    {   // 末尾でなければカンマをつける
+                        str1 += ","
+                    }
+                }
+                else
+                {
+                    // skip
+                    if colno != headvars.count-1
+                    {   // 末尾でなければカンマをつける
+                        str1 += ","
+                    }
+                }
+            }
+            str += str1 + "\r\n"  // CRLF
+        }
+
+        let savePanel = NSSavePanel()
+        savePanel.canCreateDirectories = true
+        savePanel.showsTagField = false
+        savePanel.nameFieldStringValue = "atena_nengaKazoku_SJIS.csv"
+        savePanel.begin { (result) in
+            if result == .OK {
+                guard let url = savePanel.url else { return }
+                //print(url.absoluteString)
+                do {
                     try str.write(to: url, atomically: true, encoding: String.Encoding.shiftJIS) // utf8
                 } catch {
                     // failed to write file (bad permissions, bad filename etc.)
